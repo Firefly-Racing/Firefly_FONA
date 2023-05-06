@@ -142,6 +142,8 @@ bool Adafruit_FONA::begin(Stream &port) {
   } else if (prog_char_strstr(replybuffer, (prog_char *)F("SIMCOM_SIM5320E")) !=
              0) {
     _type = FONA3G_E;
+  } else if (prog_char_strstr(replybuffer, (prog_char *)F("SIM800 R14.18")) != 0) {
+    _type = SIM800C;
   }
 
   if (_type == FONA800L) {
@@ -2468,6 +2470,7 @@ uint8_t Adafruit_FONA::readline(uint16_t timeout, bool multiline) {
       break;
     }
     delay(1);
+    rp2040.wdt_reset();
   }
   replybuffer[replyidx] = 0; // null term
   return replyidx;
