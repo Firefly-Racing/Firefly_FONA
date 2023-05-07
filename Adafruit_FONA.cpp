@@ -2288,6 +2288,7 @@ bool Adafruit_FONA::HTTP_POST_start(char *url, FONAFlashStringPtr contenttype,
 
   return true;
 }
+
 /**
  * @brief End an HTTP POST request
  *
