@@ -52,7 +52,7 @@ Adafruit_FONA::Adafruit_FONA(int8_t rst) {
   apnpassword = 0;
   mySerial = 0;
   httpsredirect = false;
-  useragent = F("FONA");
+  useragent = F("Firefly Telemetry Unit V2");
   ok_reply = F("OK");
 }
 
