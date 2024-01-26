@@ -1595,7 +1595,7 @@ bool Adafruit_FONA::enableGPRS(bool onoff) {
     // disconnect all sockets
     sendCheckReply(F("AT+CIPSHUT"), F("SHUT OK"), 20000);
 
-    if (!sendCheckReply(F("AT+CGATT=1"), ok_reply, 10000))
+    if (!sendCheckReply(F("AT+CGATT=1"), ok_reply, 20000))
       return false;
 
     // set bearer profile! connection type GPRS
