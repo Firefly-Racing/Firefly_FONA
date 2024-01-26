@@ -115,7 +115,7 @@ bool Adafruit_FONA::begin(Stream &port) {
     return false;
   }
 
-  // turn on hangupitude
+  // configure ATH to hang up voice call
   sendCheckReply(F("AT+CVHU=0"), ok_reply);
 
   delay(100);
@@ -726,6 +726,16 @@ bool Adafruit_FONA::incomingCallNumber(char *phonenum) {
 
   Adafruit_FONA::_incomingCall = false;
   return true;
+}
+
+bool Adafruit_FONA::setAutoPickup(bool enable) {
+    // command: ATS0=<n>
+    // if n == 0, auto pickup is disabled
+    if (enable) {
+        // auto pick up after 3 rings
+        return sendCheckReply("ATS0=3", ok_reply);
+    }
+    return sendCheckReply("ATS0=0", ok_reply);
 }
 
 /********* SMS **********************************************************/

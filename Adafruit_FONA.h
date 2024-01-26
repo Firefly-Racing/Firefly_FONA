@@ -187,6 +187,10 @@ public:
   bool pickUp(void);
   bool callerIdNotification(bool enable, uint8_t interrupt = 0);
   bool incomingCallNumber(char *phonenum);
+<<<<<<< Updated upstream
+=======
+  bool setAutoPickup(bool enable);
+>>>>>>> Stashed changes
 
   // Helper functions to verify responses.
   bool expectReply(FONAFlashStringPtr reply, uint16_t timeout = 10000);
@@ -265,6 +269,10 @@ public:
    */
   Adafruit_FONA_3G(int8_t reset_pin) : Adafruit_FONA(reset_pin) {
     _type = FONA3G_A;
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   }
 
   bool getBattVoltage(uint16_t *v);
