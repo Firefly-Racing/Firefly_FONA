@@ -732,8 +732,8 @@ bool Adafruit_FONA::setAutoPickup(bool enable) {
     // command: ATS0=<n>
     // if n == 0, auto pickup is disabled
     if (enable) {
-        // auto pick up after 3 rings
-        return sendCheckReply("ATS0=3", ok_reply);
+        // auto pick up after 1 rings
+        return sendCheckReply("ATS0=1", ok_reply);
     }
     return sendCheckReply("ATS0=0", ok_reply);
 }
