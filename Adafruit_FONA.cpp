@@ -598,6 +598,23 @@ bool Adafruit_FONA::setPWM(uint16_t period, uint8_t duty) {
   return sendCheckReply(F("AT+SPWM=0,"), period, duty, ok_reply);
 }
 
+/**
+ * @brief Play an arbitrary audio tone on the headset (BLOCKING)
+ * 
+ */
+bool Adafruit_FONA::playTone(uint16_t freq, uint16_t genPeriod, uint16_t stopPeriod, uint16_t duration) {
+    // TODO: add limit checking
+    mySerial->print(F("AT+SIMTONE=1,"));
+    mySerial->print(freq);
+    mySerial->print(genPeriod);
+    mySerial->print(stopPeriod);
+    mySerial->println(duration);
+
+    readline(1000, true);
+    return true;
+}
+
+
 /********* CALL PHONES **************************************************/
 
 /**
@@ -2623,6 +2640,30 @@ uint8_t Adafruit_FONA::getReply(FONAFlashStringPtr prefix, int32_t suffix1,
 
   return l;
 }
+
+// uint8_t Adafruit_FONA::getReply(FONAFlashStringptr prefix, int16_t* suffixes, uint8_t numSuffixes, uint16_t timeout) {
+//   flushInput();
+
+//   DEBUG_PRINT(F("\t---> "));
+//   DEBUG_PRINT(prefix);
+
+//   mySerial->print(prefix);
+//   for (int i = 0; i < numSuffixes-1; i++){
+//     DEBUG_PRINT(suffixes[i], DEC);
+//     DEBUG_PRINT(',');
+
+//     mySerial->print(suffixes[i], DEC);
+//     mySerial->print(',');
+//   }
+
+//   DEBUG_PRINT(suffixes[numSuffixes-1], DEC);
+//   mySerial->println(suffixes[numSuffixes-1]);
+
+//   uint8_t l = readline(timeout);
+  
+//   DEBUG_PRINT(F("\t<--- "));
+//   DEBUG_PRINTLN(replybuffer);
+// }
 
 // Send prefix, ", suffix, ", and newline. Return response (and also set
 // replybuffer with response).

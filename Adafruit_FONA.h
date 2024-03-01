@@ -179,6 +179,7 @@ public:
 
   // PWM (buzzer)
   bool setPWM(uint16_t period, uint8_t duty = 50);
+  bool playTone(uint16_t freq, uint16_t genPeriod, uint16_t stopPeriod, uint16_t duration);
 
   // Phone calls
   bool callPhone(char *phonenum);
